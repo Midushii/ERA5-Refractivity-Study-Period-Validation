@@ -2,20 +2,12 @@ import xarray as xr
 import pandas as pd
 import numpy as np
 
-# =========================
-# LOAD DATA
-# =========================
-
 ds = xr.open_dataset(
     "era5-pressure.grib",
     engine="cfgrib"
 )
 
 print("Dataset loaded.")
-
-# =========================
-# SPATIAL MEAN
-# =========================
 
 t = ds["t"].mean(
     dim=["latitude", "longitude"]
@@ -29,15 +21,8 @@ z = ds["z"].mean(
     dim=["latitude", "longitude"]
 )
 
-# =========================
-# HEIGHT (m)
-# =========================
 
 h = z / 9.80665
-
-# =========================
-# PRESSURE LEVELS
-# =========================
 
 P = ds["isobaricInhPa"]
 
@@ -49,19 +34,12 @@ P3 = xr.DataArray(
     }
 )
 
-# =========================
-# VAPOUR PRESSURE
-# =========================
-
 e = (
     q * P3
 ) / (
     0.622 + 0.378 * q
 )
 
-# =========================
-# REFRACTIVITY
-# =========================
 
 N = (
     77.6 * P3 / t
@@ -70,10 +48,6 @@ N = (
 )
 
 print("N calculated.")
-
-# =========================
-# SAVE TO NETCDF
-# =========================
 
 xr.Dataset({
 
