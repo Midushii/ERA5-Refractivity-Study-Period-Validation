@@ -7,7 +7,7 @@ A statistical validation pipeline that computes atmospheric radio refractivity f
 </p>
 
 <p align="center">
-  <em>Yearly mean atmospheric radio refractivity, 2000–2025 — the long-term signal this study period selection is validated against.</em>
+  <em>Yearly mean atmospheric radio refractivity, 2000–2025 </em>
 </p>
 
 ---
@@ -18,7 +18,7 @@ This project addresses three linked questions, forming the validation stage that
 
 1. **Is the atmospheric refractive environment over the study domain temporally stable enough** to justify selecting a fixed multi-year window as a representative "study period," rather than treating every year as statistically distinct?
 2. **Which years, seasons, and times of day are dominated by which propagation regime** (sub-refraction, normal/super-refraction, or ducting), and how consistent is that regime distribution from year to year?
-3. **Can this stability be demonstrated quantitatively** — through inter-annual similarity, confidence intervals, and trend analysis — rather than assumed?
+3. **Can this stability be demonstrated quantitatively**  through inter-annual similarity, confidence intervals, and trend analysis, rather than assumed?
 
 ---
 
@@ -131,7 +131,7 @@ Year-to-year variation in the mean state is small (≈0.7% of the mean), while w
   <img src="04_Figures/Propagation_Regime_Frequency.png" width="440">
 </p>
 
-The domain is dominated by normal (super-refractive) propagation in essentially every year, with ducting and sub-refraction consistently confined to a small, stable minority of hours — supporting the case for a shared, representative multi-year window rather than treating individual years as atmospherically distinct regimes.
+The domain is dominated by normal (super-refractive) propagation in essentially every year, with ducting and sub-refraction consistently confined to a small, stable minority of hours, supporting the case for a shared, representative multi-year window rather than treating individual years as atmospherically distinct regimes.
 
 ### 7.3 Inter-annual similarity
 
@@ -147,7 +147,7 @@ The 2000–2025 yearly mean refractivity shows a gentle upward drift (~371–378
 
 ### 7.5 Confidence intervals
 
-95% confidence intervals on each year's mean N (from `Confidence_Intervals.csv`) are narrow (typically ±3 N-units) and overlap extensively across the full 2010–2025 span — statistically consistent with a single underlying population rather than distinct year-to-year regimes.
+95% confidence intervals on each year's mean N (from `Confidence_Intervals.csv`) are narrow (typically ±3 N-units) and overlap extensively across the full 2010–2025 span, statistically consistent with a single underlying population rather than distinct year-to-year regimes.
 
 ---
 
@@ -165,11 +165,11 @@ Study_Period_Validation/
 │
 ├── 02_Python_Codes/
 │   ├── 01_Surface_Refractivity_Analysis.py    Surface N from 2 m T/Td/P; monthly/seasonal/
-│   │                                            annual/diurnal climatology + summary stats
+│   │                                          annual/diurnal climatology + summary stats
 │   ├── 02_Pressure_Level_Refractivity.py      Pressure-level N and height reconstruction,
-│   │                                            spatially averaged over the domain
+│   │                                          spatially averaged over the domain
 │   └── 03_Study_Period_Validation.py          Yearly stats, regime classification, gradient
-│                                                stats, similarity matrix, trend, 95% CIs
+│                                              stats, similarity matrix, trend, 95% CIs
 │
 ├── 03_Tables/
 │   ├── Yearly_Statistics.csv         Per-year mean/std/min/max/CV of N
@@ -206,7 +206,7 @@ Study_Period_Validation/
        Similarity_Matrix.csv, Confidence_Intervals.csv
 ```
 
-Each script is run from `02_Python_Codes/` and expects its corresponding input file to be present in the working directory.
+Each script is run from `02_Python_Codes/`
 
 ---
 
@@ -217,7 +217,6 @@ Each script is run from `02_Python_Codes/` and expects its corresponding input f
 ✓ Propagation-regime classification completed for all years
 ✓ Inter-annual similarity, trend, and confidence-interval analysis completed
 ✓ **2010–2025 validated as a statistically representative study period**
-⏳ Full electromagnetic wave propagation prediction framework (next stage, separate repository)
 
 ---
 
@@ -236,7 +235,7 @@ Each script is run from `02_Python_Codes/` and expects its corresponding input f
 - Extend the validated 2010–2025 study period into the full EM wave propagation prediction framework.
 - Add finer vertical resolution (more pressure levels) to better resolve near-surface ducting gradients.
 - Cross-validate propagation-regime classification against independent radiosonde or shipborne observations.
-- Extend seasonal/diurnal stability analysis with formal (non-visual) statistical tests (e.g., Levene's test for variance homogeneity across years).
+- Extend diurnal stability analysis with statistical tests .
 
 ---
 
@@ -262,7 +261,7 @@ Each script is run from `02_Python_Codes/` and expects its corresponding input f
 
 ## 15. Scientific Context
 
-Before any electromagnetic wave propagation model can be trusted, the atmospheric conditions it is trained or validated on must be shown to be representative of the broader climate — not an artifact of an arbitrarily chosen time window. This project provides that statistical foundation for the Mumbai coastal Arabian Sea: demonstrating, through five independent diagnostics, that 2010–2025 is a stable, internally consistent study period suitable for downstream radio refractivity and propagation modelling work.
+Before any electromagnetic wave propagation model can be trusted, the atmospheric conditions it is trained or validated on must be shown to be representative of the broader climate. not an artifact of an arbitrarily chosen time window. This project provides that statistical foundation for the Mumbai coastal Arabian Sea: demonstrating, through five independent diagnostics, that 2010–2025 is a stable, internally consistent study period suitable for downstream radio refractivity and propagation modelling work.
 
 ---
 
