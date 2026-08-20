@@ -2,10 +2,6 @@ import xarray as xr
 import pandas as pd
 import numpy as np
 
-# ==========================================
-# LOAD PROCESSED DATA
-# ==========================================
-
 ds = xr.open_dataset("processed_pressure.nc")
 
 N = ds["N"]
@@ -15,10 +11,6 @@ years = np.unique(N.time.dt.year)
 
 print("\nYears found:")
 print(years)
-
-# ==========================================
-# 1. YEARLY STATISTICS
-# ==========================================
 
 stats = []
 
@@ -69,10 +61,6 @@ year_df.to_csv(
     "Yearly_Statistics.csv",
     index=False
 )
-
-# ==========================================
-# 2. PROPAGATION REGIME FREQUENCY
-# ==========================================
 
 results = []
 
@@ -157,10 +145,6 @@ regime_df.to_csv(
     index=False
 )
 
-# ==========================================
-# 3. GRADIENT STATISTICS
-# ==========================================
-
 grad_results = []
 
 for yr in years:
@@ -213,11 +197,6 @@ gradient_df.to_csv(
     "Gradient_Statistics.csv",
     index=False
 )
-
-# ==========================================
-# 4. SIMILARITY MATRIX
-# ==========================================
-
 profiles = []
 
 for yr in years:
@@ -253,9 +232,6 @@ similarity_df.to_csv(
     "Similarity_Matrix.csv"
 )
 
-# ==========================================
-# 5. TREND ANALYSIS
-# ==========================================
 
 meanN = (
     N.mean(dim="isobaricInhPa")
@@ -287,10 +263,6 @@ print("TREND ANALYSIS")
 print("======================")
 print("Slope =", slope, "N/year")
 print("R² =", r2)
-
-# ==========================================
-# 6. 95% CONFIDENCE INTERVALS
-# ==========================================
 
 ci_results = []
 
@@ -347,10 +319,6 @@ ci_df.to_csv(
     index=False
 )
 
-# ==========================================
-# 7. SEASONAL PROPAGATION REGIMES
-# ==========================================
-
 months = N.time.dt.month
 
 season = xr.full_like(
@@ -383,14 +351,11 @@ season = xr.where(
     season
 )
 
-print("\n======================")
-print("SEASONS PRESENT")
-print("======================")
-print(np.unique(season.values))
 
-print("\n======================")
+print("SEASONS PRESENT")
+print(np.unique(season.values))
 print("ALL ANALYSES COMPLETED")
-print("======================")
+
 
 print("Files saved:")
 print("Yearly_Statistics.csv")
